@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="small-4 small-centered columns">
+    <h1>Categories</h1>
+  </div>
+</div>
+
+<div class="row">
+  <% @categories.each do |category| %>
+    <div class="small-3 columns">
+      <div class="category card">
+        <h4><%= link_to "#{category.category} restaurants", category_restaurants_path(category)%><h4>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,34 @@
+<div class="restaurant card">
+  <div class="card-divider">
+    <h2><%= @restaurant.name%></h2>
+  </div>
+  <div class="card-section">
+    <p>
+      <%= @restaurant.address %><br>
+      <%= @restaurant.city %><br>
+      <%= @restaurant.state %><br>
+      <%= @restaurant.zip %><br>
+    </p>
+    <p>
+      <%= @restaurant.description %>
+      <ul>
+        <% @restaurant.categories.each do |category| %>
+        <li><%= link_to category.category, category_restaurants_path(category) %></li>
+        <% end %>
+      </ul>
+    </p>
+  </div>
+</div>
+
+<%= link_to "Add a Review", new_restaurant_review_path(@restaurant)%>
+
+<h2>Reviews</h2>
+<% @reviews.each do |review| %>
+  <div class="review card">
+    <h3><%= review.rating%></h3>
+    <p>
+      <%= review.body %><br>
+      <%= review.created_at.strftime("%B %d %Y") %>
+    </p>
+  </div>
+<% end %>

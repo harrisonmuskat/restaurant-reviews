@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="small-4 small-centered columns">
+    <% if @category %>
+    <h1><%= @category.category %> Restaurants</h1>
+    <% else %>
+    <h1>Restaurants</h1>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <% @restaurants.each do |restaurant| %>
+    <div class="small-4 columns">
+      <div class="restaurant card">
+        <div class="card-divider">
+          <h2><%= link_to restaurant.name, restaurant_reviews_path(restaurant)%></h2>
+        </div>
+        <div class="card-section">
+          <p>
+            <%= restaurant.address %><br>
+            <%= restaurant.city %><br>
+            <%= restaurant.state %><br>
+            <%= restaurant.zip %><br>
+          </p>
+        </div>
+        <div class="card-section">
+          <p>
+            <%= restaurant.description %>
+            <ul>
+              <% restaurant.categories.each do |category| %>
+              <li><%= category.category %></li>
+              <% end %>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
